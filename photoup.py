@@ -1,28 +1,28 @@
 import requests, json
 
 def gettoken():
-    username = raw_input('Nhap username fb: ')
-    password = raw_input('Nhap password fb: ')
+    username = raw_input('Facebook username: ')
+    password = raw_input('Facebook password: ')
     payload = {'u': username, 'p': password}
     get_token = requests.get('http://gymtranhuynh-winazure.rhcloud.com/token.php', params=payload).json()
     token = get_token['access_token']
     return token;
 
-question = raw_input('Ban da co token full quyen chua (Y or N) ')
+question = raw_input('Do you have token full privilege? (Y or N) ')
 
 if question.upper() == 'Y':
-    token = raw_input('Nhap token: ')
+    token = raw_input('Token: ')
     
 else:
     token = gettoken()
-    print 'Token cua ban la: '+token
+    print 'Your token: '+token
 
 print '---'
 def imageupload():
 	
 	payload={
 		'method': 'POST',
-		'url' : 'https://www.facebook.com/images/fb_icon_325x325.png',
+		'url' : 'https://www.facebook.com/images/fb_icon_325x325.png', #url to image
 		'caption': 'Test api',
 		'access_token': token
 			}
